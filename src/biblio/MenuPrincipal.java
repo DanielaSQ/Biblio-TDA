@@ -7,7 +7,15 @@ package biblio;
 
 import javax.swing.JFrame;
 import vista.Cliente.ClienteAgregar;
+import vista.Compra.LibroComprar;
+import vista.Libro.LibroAgregar;
+import vista.Compra.LibrosComprados;
+import vista.Libro.LibroInventario;
 import vista.Trabajador.TrabajadorAgregar;
+import vista.Venta.LibroVenta;
+import vista.Venta.LibrosVendidos;
+import vistaArriendo.LibroArriendo;
+import vistaArriendo.LibrosArrendados;
 import vistas.Distribuidor.DistribuidorAgregar;
 
 /**
@@ -37,16 +45,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCompra = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemLibrosComprados = new javax.swing.JMenuItem();
+        itemCompraLibro = new javax.swing.JMenuItem();
         menuVenta = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        itemLibrosVendidos = new javax.swing.JMenuItem();
+        itemLibroVenta = new javax.swing.JMenuItem();
         menuArriendo = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        itemLibrosArrendados = new javax.swing.JMenuItem();
+        itemArrendarLibro = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        itemInventarioLibro = new javax.swing.JMenuItem();
+        itemAgregarLibro = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         itemAgregarTrabajador = new javax.swing.JMenuItem();
@@ -66,43 +75,81 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuCompra.setText("Compra");
 
-        jMenuItem12.setText("Libros Comprados");
-        menuCompra.add(jMenuItem12);
+        itemLibrosComprados.setText("Libros Comprados");
+        itemLibrosComprados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLibrosCompradosActionPerformed(evt);
+            }
+        });
+        menuCompra.add(itemLibrosComprados);
 
-        jMenuItem1.setText("Comprar Libro");
-        menuCompra.add(jMenuItem1);
+        itemCompraLibro.setText("Comprar Libro");
+        itemCompraLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCompraLibroActionPerformed(evt);
+            }
+        });
+        menuCompra.add(itemCompraLibro);
 
         jMenuBar1.add(menuCompra);
 
         menuVenta.setText("Venta");
 
-        jMenuItem4.setText("Libros Vendidos");
-        menuVenta.add(jMenuItem4);
+        itemLibrosVendidos.setText("Libros Vendidos");
+        itemLibrosVendidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLibrosVendidosActionPerformed(evt);
+            }
+        });
+        menuVenta.add(itemLibrosVendidos);
 
-        jMenuItem6.setText("Vender Libros");
-        menuVenta.add(jMenuItem6);
+        itemLibroVenta.setText("Vender Libros");
+        itemLibroVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLibroVentaActionPerformed(evt);
+            }
+        });
+        menuVenta.add(itemLibroVenta);
 
         jMenuBar1.add(menuVenta);
 
         menuArriendo.setText("Arriendo");
 
-        jMenuItem8.setText("Libros Arrendados");
-        menuArriendo.add(jMenuItem8);
+        itemLibrosArrendados.setText("Libros Arrendados");
+        itemLibrosArrendados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLibrosArrendadosActionPerformed(evt);
+            }
+        });
+        menuArriendo.add(itemLibrosArrendados);
 
-        jMenuItem7.setText("Arrendar Libros");
-        menuArriendo.add(jMenuItem7);
+        itemArrendarLibro.setText("Arrendar Libros");
+        itemArrendarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemArrendarLibroActionPerformed(evt);
+            }
+        });
+        menuArriendo.add(itemArrendarLibro);
 
         jMenuBar1.add(menuArriendo);
 
         jMenu3.setText("Libros");
 
-        jMenuItem5.setText("Inventario");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        itemInventarioLibro.setText("Inventario");
+        itemInventarioLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                itemInventarioLibroActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jMenu3.add(itemInventarioLibro);
+
+        itemAgregarLibro.setText("Agregar Libro");
+        itemAgregarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAgregarLibroActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemAgregarLibro);
 
         jMenuBar1.add(jMenu3);
 
@@ -182,9 +229,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void itemInventarioLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventarioLibroActionPerformed
+        LibroInventario inventarioLib = new LibroInventario();
+        inventarioLib.setVisible(true);
+    }//GEN-LAST:event_itemInventarioLibroActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
        DistribuidorAgregar agregarDis = new DistribuidorAgregar();
@@ -203,6 +251,44 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TrabajadorAgregar agregarTra = new TrabajadorAgregar();
         agregarTra.setVisible(true);
     }//GEN-LAST:event_itemAgregarTrabajadorActionPerformed
+
+    private void itemAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarLibroActionPerformed
+        LibroAgregar agregarLib = new LibroAgregar();
+        agregarLib.setVisible(true);
+    }//GEN-LAST:event_itemAgregarLibroActionPerformed
+
+    private void itemLibrosCompradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLibrosCompradosActionPerformed
+        LibrosComprados compradosLib = new LibrosComprados();
+        compradosLib.setVisible(true);
+    }//GEN-LAST:event_itemLibrosCompradosActionPerformed
+
+    private void itemCompraLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCompraLibroActionPerformed
+        LibroComprar compraLib = new LibroComprar();
+        compraLib.setVisible(true);
+        
+    }//GEN-LAST:event_itemCompraLibroActionPerformed
+
+    private void itemLibrosVendidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLibrosVendidosActionPerformed
+        LibrosVendidos vendidosLib = new LibrosVendidos();
+        vendidosLib.setVisible(true);
+    }//GEN-LAST:event_itemLibrosVendidosActionPerformed
+
+    private void itemLibroVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLibroVentaActionPerformed
+        LibroVenta ventaLib = new LibroVenta();
+        ventaLib.setVisible(true);
+        
+    }//GEN-LAST:event_itemLibroVentaActionPerformed
+
+    private void itemLibrosArrendadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLibrosArrendadosActionPerformed
+        LibrosArrendados arrendadosLib = new LibrosArrendados();
+        arrendadosLib.setVisible(true);
+        
+    }//GEN-LAST:event_itemLibrosArrendadosActionPerformed
+
+    private void itemArrendarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemArrendarLibroActionPerformed
+        LibroArriendo arriendoLib = new LibroArriendo();
+        arriendoLib.setVisible(true);
+    }//GEN-LAST:event_itemArrendarLibroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,7 +328,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Agregar;
     private javax.swing.JMenuItem itemAgreCliente;
+    private javax.swing.JMenuItem itemAgregarLibro;
     private javax.swing.JMenuItem itemAgregarTrabajador;
+    private javax.swing.JMenuItem itemArrendarLibro;
+    private javax.swing.JMenuItem itemCompraLibro;
+    private javax.swing.JMenuItem itemInventarioLibro;
+    private javax.swing.JMenuItem itemLibroVenta;
+    private javax.swing.JMenuItem itemLibrosArrendados;
+    private javax.swing.JMenuItem itemLibrosComprados;
+    private javax.swing.JMenuItem itemLibrosVendidos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -250,15 +344,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenu menuArriendo;
     private javax.swing.JMenu menuCompra;
